@@ -18,7 +18,8 @@ export const config = {
     ], // rest of your config
     pages: {
         signIn: "/sign-in",
-    }
+    },
+    secret: process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthOptions
 
 // Use it in server contexts
