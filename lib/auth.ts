@@ -20,6 +20,12 @@ export const config = {
         signIn: "/sign-in",
     },
     secret: process.env.NEXTAUTH_SECRET,
+    callbacks: {
+        async signIn({ user, account, profile }) {
+            console.log(user);
+            return true
+        },
+    }
 } satisfies NextAuthOptions
 
 // Use it in server contexts
