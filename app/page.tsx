@@ -5,8 +5,12 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      go to the dashboard protected route
-      <Link href='/dashboard' className={buttonVariants()}>click me</Link>
+      <div className="">
+        go to the dashboard protected route
+        <Link href="/dashboard" className={buttonVariants()}>
+          click me
+        </Link>
+      </div>
     </div>
   );
 };
