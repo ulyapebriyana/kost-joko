@@ -25,9 +25,9 @@ model Room {
 
 model Transaction {
   id       Int    @id @default(autoincrement())
-  fullname String
+  fullName String
   address  String
-  infoice  String
+  invoice  String
   userId   String
   room     Room   @relation(fields: [roomId], references: [id], onUpdate: Cascade, onDelete: Cascade)
   roomId   Int

@@ -7,7 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
-
+import { useTransition } from "react";
 import {
   Dialog,
   DialogContent,
@@ -28,6 +28,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { createTransaction } from "@/lib/action";
 
 type Props = {
   available: boolean;
@@ -37,6 +38,7 @@ type Props = {
 const Booking = ({ available, roomId }: Props) => {
   const router = useRouter();
   const { userId } = useAuth();
+  const [isPending, startTransition] = useTransition();
 
   const handleClick = () => {
     if (!userId) {
@@ -49,14 +51,21 @@ const Booking = ({ available, roomId }: Props) => {
     defaultValues: {
       fullName: "",
       address: "",
-      invoice: ""
+      invoice: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof bookingSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    startTransition(async () => {
+      const newValues = {
+        fullName: values.fullName,
+        address: values.address,
+        invoice: values.invoice,
+        userId: userId,
+        roomId: roomId,
+      };
+      await createTransaction(newValues);
+    });
   }
 
   return (
@@ -120,7 +129,9 @@ const Booking = ({ available, roomId }: Props) => {
               )}
             />
             <DialogFooter>
-              <Button type="submit" className="w-full">Submit</Button>
+              <Button type="submit" className="w-full" disabled={isPending}>
+                {isPending ? "Submittig..." : "Submit"}
+              </Button>
             </DialogFooter>
           </form>
         </Form>

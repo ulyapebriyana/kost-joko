@@ -8,6 +8,7 @@ import { BiWifi } from "react-icons/bi";
 import { FaBath } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
 import { BiSolidCabinet } from "react-icons/bi";
+import { FaKitchenSet } from "react-icons/fa6";
 
 const facilities = [
   {
@@ -47,8 +48,8 @@ const facilities = [
   },
   {
     id: 8,
-    name: "Lemari",
-    symbol: <BiSolidCabinet className="h-8 w-8 md:h-20 md:w-20" />,
+    name: "Dapur Umum",
+    symbol: <FaKitchenSet className="h-8 w-8 md:h-20 md:w-20" />,
   },
 ];
 
