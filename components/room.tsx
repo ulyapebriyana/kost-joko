@@ -1,4 +1,4 @@
-import React from "react";
+import { auth } from "@clerk/nextjs";
 import {
   Card,
   CardContent,
@@ -10,6 +10,7 @@ import {
 import { Button } from "./ui/button";
 import PageTitle from "./PageTitle";
 import prisma from "@/lib/db";
+import Booking from "./booking";
 
 const formatPriceToRupiah = (price: any): string => {
   return new Intl.NumberFormat("id-ID", {
@@ -39,9 +40,7 @@ const Room = async () => {
             </CardHeader>
             <CardContent>{room.description}</CardContent>
             <CardFooter>
-              <Button disabled={!room.available}>
-                {room.available ? "Pesan" : "Terisi"}
-              </Button>
+              <Booking available={room.available} roomId={room.id} />
             </CardFooter>
           </Card>
         ))}
