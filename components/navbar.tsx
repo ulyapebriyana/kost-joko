@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Button, buttonVariants } from "./ui/button";
 import { auth } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
+import logo from "@/public/images/logo.png";
+import Image from "next/image";
 
 const Navbar = async () => {
   const { userId } = auth();
@@ -10,12 +12,20 @@ const Navbar = async () => {
   return (
     <nav className="w-full h-[10vh] border-b-2 flex items-center">
       <div className="flex justify-between items-center w-full container">
-        <Link href={"/"}>Logo</Link>
+        <Link href={"/"}>
+          <Image
+            src={logo}
+            alt="kostmbagdjoko.png"
+            height={60}
+            width={80}
+            priority
+          />
+        </Link>
         {userId ? (
           <div className="flex justify-center items-center gap-4">
             {isAdmin && (
               <Link
-                href={"/admin"}
+                href={"/dashboard"}
                 className={buttonVariants({ variant: "destructive" })}
               >
                 Admin Dashboard

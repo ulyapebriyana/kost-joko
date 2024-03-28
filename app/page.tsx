@@ -1,16 +1,13 @@
+
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
+
+import CarouselHome from "@/components/carousel";
 
 const Home = () => {
   return (
-    <div>
-      <div className="">
-        go to the dashboard protected route
-        <Link href="/dashboard" className={buttonVariants()}>
-          click me
-        </Link>
-      </div>
+    <div className="flex items center justify-center h-[90vh] p-4">
+      <CarouselHome />
     </div>
   );
 };
