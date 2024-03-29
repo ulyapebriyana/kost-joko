@@ -7,30 +7,36 @@ import { DollarSign, Users, CreditCard, Activity } from "lucide-react";
 import Card, { CardContent, CardProps } from "@/components/Card";
 import BarChart from "@/components/BarChart";
 import SalesCard, { SalesProps } from "@/components/SalesCard";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
 
 const cardData: CardProps[] = [
   {
-    label: "Total Revenue",
-    amount: "$45,231.89",
-    discription: "+20.1% from last month",
+    label: "Total Pendapatan",
+    amount: "Rp 5.500.000,00",
+    discription: "+20% dari bulan lalu",
     icon: DollarSign
   },
   {
-    label: "Subscriptions",
-    amount: "+2350",
-    discription: "+180.1% from last month",
+    label: "Kamar Kosong",
+    amount: "0",
+    discription: "Kamar terisi semua",
     icon: Users
   },
   {
-    label: "Sales",
-    amount: "+12,234",
-    discription: "+19% from last month",
+    label: "Sewa Kamar",
+    amount: "+3",
+    discription: "+3 kamar sejak bulan lalu",
     icon: CreditCard
   },
   {
-    label: "Active Now",
-    amount: "+573",
-    discription: "+201 since last hour",
+    label: "User Aktif",
+    amount: "+13",
+    discription: "+7 sejak sebulan yang lalu",
     icon: Activity
   }
 ];
@@ -39,27 +45,27 @@ const uesrSalesData: SalesProps[] = [
   {
     name: "Olivia Martin",
     email: "olivia.martin@email.com",
-    saleAmount: "+$1,999.00"
+    saleAmount: 550000
   },
   {
     name: "Jackson Lee",
     email: "isabella.nguyen@email.com",
-    saleAmount: "+$1,999.00"
+    saleAmount: 550000
   },
   {
     name: "Isabella Nguyen",
     email: "isabella.nguyen@email.com",
-    saleAmount: "+$39.00"
+    saleAmount: 550000
   },
   {
     name: "William Kim",
     email: "will@email.com",
-    saleAmount: "+$299.00"
+    saleAmount: 550000
   },
   {
     name: "Sofia Davis",
     email: "sofia.davis@email.com",
-    saleAmount: "+$39.00"
+    saleAmount: 550000
   }
 ];
 
@@ -85,15 +91,15 @@ export default function AdminDashboard() {
       </section>
       <section className="grid grid-cols-1  gap-4 transition-all lg:grid-cols-2">
         <CardContent>
-          <p className="p-4 font-semibold">Overview</p>
+          <p className="p-4 font-semibold">Ringkasan(juta)</p>
 
           <BarChart />
         </CardContent>
         <CardContent className="flex justify-between gap-4">
           <section>
-            <p>Recent Sales</p>
+            <p>Pemesanan Terbaru</p>
             <p className="text-sm text-gray-400">
-              You made 265 sales this month.
+              Kamu menerima 6 transaksi sebulan terahir
             </p>
           </section>
           {uesrSalesData.map((d, i) => (

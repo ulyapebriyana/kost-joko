@@ -12,7 +12,14 @@ import React from "react";
 export type SalesProps = {
   name: string;
   email: string;
-  saleAmount: string;
+  saleAmount: number;
+};
+
+const formatPriceToRupiah = (price: any): string => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(price);
 };
 
 export default function SalesCard(props: SalesProps) {
@@ -29,7 +36,7 @@ export default function SalesCard(props: SalesProps) {
             </div>
         </div>
       </section>
-        <p>{props.saleAmount}</p>
+        <p>{formatPriceToRupiah(props.saleAmount)}</p>
     </div>
   );
 }

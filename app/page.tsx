@@ -3,6 +3,7 @@
 import CarouselHome from "@/components/carousel";
 import Facility from "@/components/facility";
 import Room from "@/components/room";
+import Footer from "@/components/footer";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <CarouselHome />
       <Facility />
       <Room />
+      <Footer />
     </div>
   );
 };
